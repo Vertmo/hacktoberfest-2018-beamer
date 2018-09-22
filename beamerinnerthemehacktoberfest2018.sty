@@ -1,0 +1,36 @@
+\mode<presentation>
+
+\setbeamertemplate{background}{
+  \ifnum\value{page}=1\relax%
+  \begin{tikzpicture}
+    \node[inner sep=0pt] (logo) at (0,0) {
+      \includegraphics[height=\paperheight]{resources/Hacktoberfest_poster1.png}
+    };
+  \end{tikzpicture}
+  \fi
+}
+
+% Title page
+\defbeamertemplate*{title page}{texsx}[1][] { 
+  \usebackgroundtemplate{title background}
+  \vskip2.2cm%
+  \begin{columns}[t]
+    \begin{column}{9.8cm}\end{column}
+    \begin{column}{7cm}
+      \begin{beamercolorbox}[wd=6cm,right,#1]{title}
+        \usebeamerfont{title}\inserttitle%
+      \end{beamercolorbox}%
+      \vskip0.75cm%
+      \begin{beamercolorbox}[wd=6cm,right,#1]{author}
+        \usebeamerfont{author}\insertauthor%
+      \end{beamercolorbox}
+      \vskip0.2cm%
+      \begin{beamercolorbox}[wd=6cm,right,#1]{date}
+        \usebeamerfont{author}\insertdate%
+      \end{beamercolorbox}
+    \end{column}
+  \end{columns}
+  \vfill
+}
+
+\mode<all>
