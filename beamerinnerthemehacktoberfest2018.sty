@@ -1,32 +1,46 @@
 \mode<presentation>
 
 \setbeamertemplate{background}{
-  \ifnum\value{page}=1\relax%
-  \begin{tikzpicture}
-    \node[inner sep=0pt] (logo) at (0,0) {
-      \includegraphics[height=\paperheight]{resources/Hacktoberfest_poster1.png}
+  \begin{tikzpicture}[remember picture, overlay]
+    \ifnum\value{page}=1\relax%
+    \node[inner sep=0pt] (main page) at (current page.center) {
+      \includegraphics[height=\paperheight, width=\paperwidth]{resources/Hacktoberfest_poster1.png}
     };
+    \fi
   \end{tikzpicture}
-  \fi
+}
+
+% A frame title
+\setbeamertemplate{frametitle} {
+  \begin{beamercolorbox}[wd=\paperwidth, sep=0.7em]{frametitle}
+    \usebeamerfont{frametitle}\insertframetitle\\
+    \usebeamerfont{framesubtitle}\insertframesubtitle
+    \begin{tikzpicture}[remember picture, overlay]
+      \fill [amber] (-12,4) rectangle (12,1);
+      \node[inner sep=0pt] (main page) at (7.8,0.42) {
+        \includegraphics[height=50pt]{resources/Hacktoberfest_2018_logo_lockup.png}
+      };
+    \end{tikzpicture}
+  \end{beamercolorbox}
 }
 
 % Title page
-\defbeamertemplate*{title page}{texsx}[1][] { 
+\defbeamertemplate*{title page}{hacktoberfest2018}[1][] { 
   \usebackgroundtemplate{title background}
   \vskip2.2cm%
   \begin{columns}[t]
-    \begin{column}{9.8cm}\end{column}
+    \begin{column}{8cm}\end{column}
     \begin{column}{7cm}
-      \begin{beamercolorbox}[wd=6cm,right,#1]{title}
-        \usebeamerfont{title}\inserttitle%
+      \begin{beamercolorbox}[wd=7cm,right,#1,ignorebg]{title}
+        \usebeamerfont{title}\inserttitle
       \end{beamercolorbox}%
       \vskip0.75cm%
-      \begin{beamercolorbox}[wd=6cm,right,#1]{author}
-        \usebeamerfont{author}\insertauthor%
+      \begin{beamercolorbox}[wd=7cm,right,#1,ignorebg]{author}
+        \usebeamerfont{author}\insertauthor
       \end{beamercolorbox}
       \vskip0.2cm%
-      \begin{beamercolorbox}[wd=6cm,right,#1]{date}
-        \usebeamerfont{author}\insertdate%
+      \begin{beamercolorbox}[wd=7cm,right,#1,ignorebg]{date}
+        \usebeamerfont{author}\insertdate
       \end{beamercolorbox}
     \end{column}
   \end{columns}
